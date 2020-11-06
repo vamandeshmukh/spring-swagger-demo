@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Vaman
+Build-Jdk: 11.0.4
+Implementation-Title: library-app-swagger-demo-2
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.vamandeshmukh.demo
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/library-app-swagger-demo-2
+Created-By: Maven Integration for Eclipse
+
