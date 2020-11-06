@@ -9,13 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.vamandeshmukh.demo.dtos.Book;
 
 @Repository
-public interface BookDao extends CrudRepository<Book,Long> {
-	
+public interface BookDao extends JpaRepository<Book, Long> {
 
 	List<Book> findAll();
+
 	void deleteById(Long id);
-	
-	
-	
 
 }

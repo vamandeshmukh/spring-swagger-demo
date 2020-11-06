@@ -13,28 +13,28 @@ import com.vamandeshmukh.demo.dtos.Book;
 public class BookService {
 
 	@Autowired
-	private BookDao library;
+	private BookDao bookDao;
 
 	public List<Book> getAllbooks() {
 		System.out.println("Books...");
-		return library.findAll();
+		return bookDao.findAll();
 	}
 
 	public Book getBookById(Long id) {
 		System.out.println("Book");
-		return library.findById(id).get();
+		return bookDao.findById(id).get();
 	}
 
 	public Book addBook(Book book) {
 		System.out.println("Book added.");
-		return library.save(book);
+		return bookDao.save(book);
 
 	}
 
 	public Book updateBook(Long id, Book book) {
 		System.out.println("Book updated.");
 
-		Optional<Book> repBook = library.findById(id);
+		Optional<Book> repBook = bookDao.findById(id);
 
 		if (repBook.isPresent()) {
 
@@ -46,7 +46,7 @@ public class BookService {
 			bookToBeUpdated.setPrice(book.getPrice());
 			bookToBeUpdated.setPublishYear(book.getPublishYear());
 
-			return library.save(bookToBeUpdated);
+			return bookDao.save(bookToBeUpdated);
 
 		}
 
@@ -56,7 +56,7 @@ public class BookService {
 	public String removeBook(Long bookId) {
 		System.out.println("Book removed.");
 
-		library.deleteById(bookId);
+		bookDao.deleteById(bookId);
 		return "Book deleted Sucessfully";
 	}
 
