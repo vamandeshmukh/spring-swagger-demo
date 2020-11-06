@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vamandeshmukh.demo.dtos.Book;
-import com.vamandeshmukh.demo.service.LibraryService;
+import com.vamandeshmukh.demo.service.BookService;
 
 
 //connect from postman as http://localhost:8080/books/
@@ -27,7 +27,7 @@ class BookController{
 	Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
-	private LibraryService libraryService;
+	private BookService bookService;
 	
 
 
@@ -35,7 +35,7 @@ class BookController{
 public @ResponseBody List<Book> getLibraryBooks() 
 { 
 	
-	List<Book> books = libraryService.getAllbooks();
+	List<Book> books = bookService.getAllbooks();
 	
 
 	
@@ -46,7 +46,7 @@ public @ResponseBody List<Book> getLibraryBooks()
 public @ResponseBody  Book getBookById(@PathVariable Long id) 
 {
 	
-	return libraryService.getBookById(id);
+	return bookService.getBookById(id);
 }
 
 
@@ -54,20 +54,20 @@ public @ResponseBody  Book getBookById(@PathVariable Long id)
 @PostMapping("/")
 public @ResponseBody Book addBook(@RequestBody Book book) 
 {
-	return libraryService.addBook(book);
+	return bookService.addBook(book);
 }
 
 @PutMapping("/{id}")
 public @ResponseBody Book updateBook(@PathVariable Long id,@RequestBody Book book) 
 {
 	
-	return libraryService.updateBook(id,book);
+	return bookService.updateBook(id,book);
 }
 
 @DeleteMapping("/{id}")
 public @ResponseBody String removeBook(@PathVariable Long id) 
 {
-	return libraryService.removeBook(id);
+	return bookService.removeBook(id);
 }
 
 

@@ -3,61 +3,36 @@ package com.vamandeshmukh.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.vamandeshmukh.demo.dao.LibraryDao;
+import com.vamandeshmukh.demo.dao.BookDao;
 import com.vamandeshmukh.demo.dtos.Book;
 
 @Service
-public class LibraryService {
+public class BookService {
 
 	@Autowired
-	private LibraryDao library;
+	private BookDao library;
 
-	
-	private static Logger logger = LoggerFactory.getLogger(LibraryService.class);
-
-	static void sleepFor(int seconds) {
-		
-		 try
-	        {
-			 logger.info("Going to sleep for "+seconds+" Secs.. to slow down application.");
-	            Thread.sleep(1000*seconds);
-	        }
-	        catch (InterruptedException e)
-	        {
-	            e.printStackTrace();
-	        }
-		 
-	}
-	
-	@Cacheable("books")
 	public List<Book> getAllbooks() {
-		sleepFor(5);
+		System.out.println("Books...");
 		return library.findAll();
 	}
 
-
-	
 	public Book getBookById(Long id) {
-		sleepFor(2);
+		System.out.println("Book");
 		return library.findById(id).get();
 	}
-	
 
-	@CacheEvict("books")
 	public Book addBook(Book book) {
+		System.out.println("Book added.");
 		return library.save(book);
 
 	}
-	@CacheEvict("books")
+
 	public Book updateBook(Long id, Book book) {
+		System.out.println("Book updated.");
 
 		Optional<Book> repBook = library.findById(id);
 
@@ -78,8 +53,8 @@ public class LibraryService {
 		return null;
 	}
 
-	@CacheEvict("books")
 	public String removeBook(Long bookId) {
+		System.out.println("Book removed.");
 
 		library.deleteById(bookId);
 		return "Book deleted Sucessfully";

@@ -1,22 +1,19 @@
 package com.vamandeshmukh.demo.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.vamandeshmukh.demo.dtos.User;
+import com.vamandeshmukh.demo.dtos.Book;
 
 @Repository
-public interface UserDao extends CrudRepository<User,Long> {
+public interface BookDao extends CrudRepository<Book,Long> {
 	
 
-	List<User> findAll();
+	List<Book> findAll();
 	void deleteById(Long id);
-	Optional<User> findById(Long id);
-	Optional<User> findByUsername(String email);
 	
 	
 	
